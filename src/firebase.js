@@ -7,12 +7,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_ID,
+  apiKey: "AIzaSyBH0TTcPXzcJuWiaa6Gk6urg_u7--JpcSc",
+  authDomain: "piso-7304c.firebaseapp.com",
+  databaseURL: "https://piso-7304c-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "piso-7304c",
+  storageBucket: "piso-7304c.appspot.com",
+  messagingSenderId: "1040893025835",
+  appId: "1:1040893025835:web:1a1f1683a13ef71f5d946e"
 };
 
 // Initialize Firebase
