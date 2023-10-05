@@ -19,6 +19,8 @@ const Notes = () => {
   const [error, setError] = useState("");
   const [user, setUser] = useState("");
   const [data, setData] = useState([]);
+  const [titolo, setTitolo] = useState([]);
+
 
   const handleOpenSearchTab = () => {
     setOpenSearchNotes(prevState => !prevState);
@@ -35,7 +37,10 @@ const Notes = () => {
 
     try {
       const docRef = await addDoc(collection(db, "notes"), {
+      
+        title: titolo,
         notes: notes,
+        date: notes,
         uid: user,
         dateCreated: moment().format("MMM Do YY")
       });
@@ -114,25 +119,46 @@ const Notes = () => {
           {error && <p style={{ color: "red" }} className='text-red-600 text-sm'>{error}</p>}
           <form>
 
-            <div >
-              <CKEditor
-                editor={ClassicEditor}
-                data={notes}
-                className='w-full bg-sidebar text-sm'
-                onReady={editor => {
-                  // You can store the "editor" and use when it is needed.
-                  console.log('Editor is ready to use!', editor);
-                }}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setNotes(data);
-                }}
-                onBlur={(event, editor) => {
-                }}
-                onFocus={(event, editor) => {
-                }}
-              />
-            </div>
+          <div>
+  <CKEditor
+    editor={ClassicEditor}
+    data={titolo} 
+    className='w-full bg-sidebar text-sm'
+    onReady={editor => {
+      
+      console.log('Editor is ready to use!', editor);
+    }}
+    onChange={(event, editor) => {
+      const data = editor.getData();
+      setTitolo(data);
+    }}
+    onBlur={(event, editor) => {
+    }}
+    onFocus={(event, editor) => {
+    }}
+  />
+</div>
+
+<div>
+  <CKEditor
+    editor={ClassicEditor}
+    data={notes}  
+    className='w-full bg-sidebar text-sm'
+    onReady={editor => {
+      
+      console.log('Editor is ready to use!', editor);
+    }}
+    onChange={(event, editor) => {
+      const data = editor.getData();
+      setNotes(data);
+    }}
+    onBlur={(event, editor) => {
+    }}
+    onFocus={(event, editor) => {
+    }}
+  />
+</div>
+
 
           </form>
         </div>
